@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <h1>Perfil de usuario</h1>
+
+  {% if user.is_authenticated %}
+    <p>¡Bienvenido, {{ user.username }}!</p>
+    <a href="{% url 'logout' %}" class="btn btn-danger">Cerrar sesión</a>
+  {% else %}
+    <p>No has iniciado sesión.</p>
+    <a href="{% url 'login' %}" class="btn btn-primary">Iniciar sesión</a>
+    <a href="{% url 'registro' %}" class="btn btn-success">Registrarse</a>
+  {% endif %}
+{% endblock %}

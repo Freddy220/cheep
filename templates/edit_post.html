@@ -1,0 +1,26 @@
+
+{% extends "main.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Editar Post</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group my-3">
+            <label for="id_title">Título</label>
+            {{ form.title|add_class:"form-control" }}
+        </div>
+
+        <div class="form-group my-3">
+            <label for="id_content">Texto</label>
+            {{ form.content|add_class:"form-control" }}
+        </div>
+
+        <button class="btn btn-primary" type="submit">Guardar Cambios</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
+<!--Solo el usuario que sea el creador de un post podra editar dicho post-->

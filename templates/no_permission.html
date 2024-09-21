@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h2 class="text-danger">{{ message }}</h2>
+    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Volver al inicio</a>
+</div>
+{% endblock %}

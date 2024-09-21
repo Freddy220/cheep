@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+
+{% block content %}
+<h1>Todos los Posts</h1>
+<a href="{% url 'new_post' %}" class="btn btn-primary mb-3">Nuevo Post</a>
+
+<ul class="list-group">
+    {% for post in posts %}
+        <li class="list-group-item">
+            <h3><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h3>
+            <p>{{ post.content|slice:200 }}... <a href="{% url 'post_detail' post.id %}">Leer más</a></p>
+            <p><small>Publicado por: {{ post.author.username }} el {{ post.created_at }}</small></p>
+            <a href="{% url 'edit_post' post.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Eliminar</a>
+        </li>
+    {% endfor %}
+</ul>
+
+{% if not posts %}
+    <p>No hay posts disponibles.</p>
+{% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

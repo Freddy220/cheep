@@ -1,0 +1,18 @@
+
+{% extends "main.html" %}
+
+{% block content %}
+    {% if user == post.author %}
+        <form method="POST">
+            {% csrf_token %}
+            <p>¿Estás seguro que quieres eliminar este post?</p>
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    {% else %}
+        <p>No tienes permiso para eliminar este post.</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Volver a la página principal</a>
+    {% endif %}
+{% endblock %}
+
+
